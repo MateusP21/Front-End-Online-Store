@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 
 class Sidebar extends React.Component {
   render() {
-    const { categories } = this.props;
+    const { categories, getCategoryId } = this.props;
+
     return (
       <div>
         {
@@ -14,6 +15,7 @@ class Sidebar extends React.Component {
                 type="button"
                 key={ category.id }
                 data-testid="category"
+                onClick={ () => getCategoryId(category.id) }
               >
                 {category.name}
               </button>
@@ -26,7 +28,7 @@ class Sidebar extends React.Component {
 }
 
 Sidebar.propTypes = {
-  categories: PropTypes.string.isRequired,
+  categories: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Sidebar;

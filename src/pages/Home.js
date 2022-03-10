@@ -28,6 +28,17 @@ class Home extends React.Component {
        .then((products) => this.setState({ products, clicked: true }));
    }
 
+   getCategoryId = (id) => {
+     const { query, clicked } = this.state;
+     if (query.length === 0 && !clicked) {
+       getProductsFromCategoryAndQuery(id, '')
+         .then((products) => this.setState({ products, clicked: true }));
+     } else {
+       getProductsFromCategoryAndQuery(id, query)
+         .then((products) => this.setState({ products, clicked: true }));
+     }
+   }
+
    handleInputChange = ({ target }) => {
      this.setState({
        query: target.value,
@@ -38,7 +49,7 @@ class Home extends React.Component {
      const { categories, query, products: { results }, clicked } = this.state;
      return (
        <div className="App">
-         <Sidebar categories={ categories } />
+         <Sidebar categories={ categories } getCategoryId={ this.getCategoryId } />
          <input
            onChange={ (e) => this.handleInputChange(e) }
            value={ query }
@@ -54,18 +65,27 @@ class Home extends React.Component {
 
          </button>
          <Carrinho />
-         <h1
-           data-testid="home-initial-message"
-         >
-           Digite algum termo de pesquisa ou escolha uma categoria.
+         {
+           !clicked
+           && (
+             <h1
+               data-testid="home-initial-message"
+             >
+               Digite algum termo de pesquisa ou escolha uma categoria.
 
-         </h1>
+             </h1>)
+         }
 
          <section className="products">
            {clicked
-             && results.map((product) => <CardProduct key={ 1 } product={ product } />)}
+             && results.map(
+               (product) => <CardProduct key={ product.id } product={ product } />,
+             )}
            {' '}
+           {
+             clicked && results.length === 0 && <h1>Nenhum produto foi encontrado</h1>
 
+           }
          </section>
 
        </div>
