@@ -29,6 +29,7 @@ class Sidebar extends React.Component {
 
 Sidebar.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.object).isRequired,
+  getCategoryId: PropTypes.func.isRequired,
 };
 
 export default Sidebar;

@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 class CardProduct extends React.Component {
@@ -7,11 +7,15 @@ class CardProduct extends React.Component {
     const { product } = this.props;
     console.log(product);
     return (
-      <div data-testid="product">
-        <img src={ product.thumbnail } alt="Product" />
-        <h3>{product.title}</h3>
-        <p>{product.price}</p>
-      </div>
+      <Link data-testid="product-detail-link" to={ `products/${product.id}` }>
+        <div data-testid="product">
+
+          <img src={ product.thumbnail } alt="Product" />
+
+          <h3>{product.title}</h3>
+          <p>{product.price}</p>
+        </div>
+      </Link>
     );
   }
 }
@@ -21,6 +25,7 @@ CardProduct.propTypes = {
     thumbnail: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
   }).isRequired,
 };
 
