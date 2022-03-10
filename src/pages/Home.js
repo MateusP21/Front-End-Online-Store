@@ -79,11 +79,11 @@ class Home extends React.Component {
          <section className="products">
            {clicked
              && results.map(
-               (product) => (<CardProduct
-
-                 key={ product.id }
-                 product={ product }
-               />),
+               (product) => (
+                 <CardProduct
+                   key={ product.id }
+                   product={ product }
+                 />),
              )}
            {' '}
            {

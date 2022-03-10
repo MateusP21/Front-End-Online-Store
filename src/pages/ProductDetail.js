@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { getProduct } from '../services/api';
 
 class ProductDetail extends React.Component {
@@ -30,5 +31,13 @@ class ProductDetail extends React.Component {
     );
   }
 }
+
+ProductDetail.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }),
+  }).isRequired,
+};
 
 export default ProductDetail;
