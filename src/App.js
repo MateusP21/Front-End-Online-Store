@@ -7,7 +7,16 @@ function App() {
   api.getProductsFromCategoryAndQuery('MLB5672', 'Acessórios para Veículos')
     .then((categories) => { console.log(categories); });
   return (
-    <div className="App" />
+    <div className="App">
+      <input type="text" />
+      <h1
+        data-testid="home-initial-message"
+      >
+        Digite algum termo de pesquisa ou escolha uma categoria.
+
+      </h1>
+
+    </div>
   );
 }
 
