@@ -1,41 +1,61 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { readCartProducts } from '../services/productStorage';
+// import { readCartProducts } from '../services/productStorage';
+import PropTypes from 'prop-types';
 
-class Carrinho extends React.Component {
+class Cart extends React.Component {
   constructor() {
     super();
     this.state = {
-      product: [],
+      // product: [],
+      // productQuantity: 0,
     };
   }
 
-  componentDidMount() {
-    const products = readCartProducts();
-    this.setState({
-      product: products,
-    });
-  }
+  // componentDidMount() {
+  //   const products = readCartProducts();
+  //   this.setState({
+  //     product: products,
+  //     productQuantity: products.length,
+  //   });
+  // }
 
   render() {
-    const { product } = this.state;
-
+    // const { product, productQuantity } = this.state;
+    const { handleAddProduct, handleRemoveProduct, cart } = this.props;
     return (
       <section>
         {' '}
         <Link to="/"> home </Link>
         {
-          product.length > 0
-            ? product.map((cartProduct) => (
-              <div key={ cartProduct.id }>
+          cart.length > 0
+            ? cart.map((cartProduct) => (
+              <div key={ cartProduct.productIndex }>
                 <h2 data-testid="shopping-cart-product-name">{cartProduct.title}</h2>
                 <p data-testid="shopping-cart-product-quantity">
                   {
-                    product.filter(
+                    cart.filter(
                       (productFilter) => productFilter.title === cartProduct.title,
                     ).length
+
                   }
                 </p>
+                <button
+                  onClick={ () => handleAddProduct(cartProduct) }
+                  data-testid="product-increase-quantity"
+                  type="button"
+                >
+                  +
+
+                </button>
+                <button
+                  onClick={ () => handleRemoveProduct(cartProduct) }
+                  data-testid="product-decrease-quantity"
+                  type="button"
+                >
+                  -
+
+                </button>
               </div>))
 
             : <h2 data-testid="shopping-cart-empty-message">Seu carrinho está vazio</h2>
@@ -46,4 +66,9 @@ class Carrinho extends React.Component {
   }
 }
 
-export default Carrinho;
+Cart.propTypes = {
+  cart: PropTypes.arrayOf(PropTypes.object).isRequired,
+  handleAddProduct: PropTypes.func.isRequired,
+  handleRemoveProduct: PropTypes.func.isRequired,
+};
+export default Cart;

@@ -2,12 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getProduct } from '../services/api';
-import { addProduct } from '../services/productStorage';
 
 class ProductDetail extends React.Component {
   constructor() {
     super();
-
     this.state = {
       product: '',
     };
@@ -20,6 +18,7 @@ class ProductDetail extends React.Component {
 
   render() {
     const { product } = this.state;
+    const { handleAddProduct } = this.props;
     return (
       <div>
         <Link to="/"> home </Link>
@@ -32,7 +31,7 @@ class ProductDetail extends React.Component {
         <button
           data-testid="product-detail-add-to-cart"
           type="button"
-          onClick={ () => addProduct(product) }
+          onClick={ () => handleAddProduct(product) }
         >
           {' '}
           Adicionar ao carrinho
@@ -44,6 +43,7 @@ class ProductDetail extends React.Component {
 }
 
 ProductDetail.propTypes = {
+  handleAddProduct: PropTypes.func.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string.isRequired,

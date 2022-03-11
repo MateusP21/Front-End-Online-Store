@@ -9,9 +9,16 @@ const saveCartProducts = (product) => localStorage
   .setItem(CART_PRODUCT_KEY, JSON.stringify(product));
 
 const addProduct = (product) => {
+  const products = readCartProducts();
+
   if (product) {
-    const products = readCartProducts();
     saveCartProducts([...products, product]);
   }
 };
+// const removeProduct = (product) => {
+//   const products = readCartProducts();
+//   saveCartProducts(products.filter(
+//     (cartProduct) => cartProduct.title !== product.title,
+//   )).shift();
+// };
 module.exports = { readCartProducts, addProduct };
