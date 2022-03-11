@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { readCartProducts, addProduct } from '../services/productStorage';
+import { addProduct } from '../services/productStorage';
 
 class CardProduct extends React.Component {
   render() {
