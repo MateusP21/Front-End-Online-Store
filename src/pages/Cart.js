@@ -1,16 +1,67 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+// import { readCartProducts } from '../services/productStorage';
 
-class Carrinho extends React.Component {
+class Cart extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      // product: [],
+      // productQuantity: 0,
+    };
+  }
+
   render() {
+    const { handleAddProduct, handleRemoveProduct, cart } = this.props;
     return (
-      <div>
+      <section>
         {' '}
         <Link to="/"> home </Link>
-        <h2 data-testid="shopping-cart-empty-message">Seu carrinho está vazio</h2>
-      </div>
+        {
+          cart.length > 0
+            ? [...new Map(cart.map((cartItem) => [cartItem.id, cartItem])).values()]
+              .map((cartProduct) => (
+                <div key={ cartProduct.productIndex }>
+                  <h2 data-testid="shopping-cart-product-name">{cartProduct.title}</h2>
+                  <p data-testid="shopping-cart-product-quantity">
+                    {
+                      cart.filter(
+                        (productFilter) => productFilter.title === cartProduct.title,
+                      ).length
+
+                    }
+                  </p>
+                  <button
+                    onClick={ () => handleAddProduct(cartProduct) }
+                    data-testid="product-increase-quantity"
+                    type="button"
+                  >
+                    +
+
+                  </button>
+                  <button
+                    onClick={ () => handleRemoveProduct(cartProduct) }
+                    data-testid="product-decrease-quantity"
+                    type="button"
+                  >
+                    -
+
+                  </button>
+                </div>))
+
+            : <h2 data-testid="shopping-cart-empty-message">Seu carrinho está vazio</h2>
+        }
+        <Link data-testid="checkout-products" to="/checkout">Finalizar Compra</Link>
+      </section>
+
     );
   }
 }
 
-export default Carrinho;
+Cart.propTypes = {
+  cart: PropTypes.arrayOf(PropTypes.object).isRequired,
+  handleAddProduct: PropTypes.func.isRequired,
+  handleRemoveProduct: PropTypes.func.isRequired,
+};
+export default Cart;

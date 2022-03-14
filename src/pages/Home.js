@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import CardProduct from '../components/CardProduct';
 // import { Link } from 'react-router-dom';
 import Carrinho from '../components/Carrinho';
@@ -47,6 +48,7 @@ class Home extends React.Component {
 
    render() {
      const { categories, query, products: { results }, clicked } = this.state;
+     const { handleAddProduct, cart } = this.props;
      return (
        <div className="App">
          <Sidebar categories={ categories } getCategoryId={ this.getCategoryId } />
@@ -64,7 +66,7 @@ class Home extends React.Component {
            Pesquisar
 
          </button>
-         <Carrinho />
+         <Carrinho cart={ cart } />
          {
            !clicked
            && (
@@ -81,6 +83,7 @@ class Home extends React.Component {
              && results.map(
                (product) => (
                  <CardProduct
+                   handleAddProduct={ handleAddProduct }
                    key={ product.id }
                    product={ product }
                  />),
@@ -96,5 +99,8 @@ class Home extends React.Component {
      );
    }
 }
-
+Home.propTypes = {
+  cart: PropTypes.arrayOf(PropTypes.object).isRequired,
+  handleAddProduct: PropTypes.func.isRequired,
+};
 export default Home;
