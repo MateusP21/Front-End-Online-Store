@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import { readCartProducts } from '../services/productStorage';
 import PropTypes from 'prop-types';
+// import { readCartProducts } from '../services/productStorage';
 
 class Cart extends React.Component {
   constructor() {
@@ -12,16 +12,9 @@ class Cart extends React.Component {
     };
   }
 
-  // componentDidMount() {
-  //   const products = readCartProducts();
-  //   this.setState({
-  //     product: products,
-  //     productQuantity: products.length,
-  //   });
-  // }
-
   render() {
     // const { product, productQuantity } = this.state;
+
     const { handleAddProduct, handleRemoveProduct, cart } = this.props;
     return (
       <section>
