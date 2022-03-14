@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 class CardProduct extends React.Component {
   render() {
     const { product, handleAddProduct } = this.props;
-    // const { shipping } = product;
+    const { shipping } = product;
     return (
       <section>
 
@@ -17,10 +17,10 @@ class CardProduct extends React.Component {
 
           </div>
         </Link>
-        {/* {
+        {
           shipping.free_shipping
             ? <h4 data-testid="free-shipping">Frete Gratis</h4> : ''
-        } */}
+        }
         <button
           data-testid="product-add-to-cart"
           type="button"
