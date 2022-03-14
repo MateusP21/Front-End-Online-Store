@@ -5,6 +5,7 @@ import { addProduct } from './services/productStorage';
 import Home from './pages/Home';
 import Cart from './pages/Cart';
 import ProductDetail from './pages/ProductDetail';
+import Checkout from './pages/Checkout';
 // import { getCategories, getProductsFromCategoryAndQuery } from './services/api';
 
 class App extends React.Component {
@@ -42,6 +43,9 @@ class App extends React.Component {
         const { cart } = this.state;
         return (
           <BrowserRouter>
+            <Route path="/checkout">
+              <Checkout cart={ cart } />
+            </Route>
             <Route path="/cart">
               <Cart
                 handleAddProduct={ this.handleAddProduct }

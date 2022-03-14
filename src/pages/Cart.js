@@ -52,8 +52,9 @@ class Cart extends React.Component {
 
             : <h2 data-testid="shopping-cart-empty-message">Seu carrinho está vazio</h2>
         }
-
+        <Link data-testid="checkout-products" to="/checkout">Finalizar Compra</Link>
       </section>
+
     );
   }
 }

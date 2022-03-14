@@ -46,7 +46,6 @@ class ProductDetail extends React.Component {
      localStorage.setItem(REVIEW_KEY, JSON.stringify([...reviews, completedReview]));
      this.setState({
        reviews: JSON.parse(localStorage.getItem(REVIEW_KEY)),
-
      });
    }
 
