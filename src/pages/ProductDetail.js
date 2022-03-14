@@ -64,7 +64,7 @@ class ProductDetail extends React.Component {
    render() {
      const { product, saveButton, email, reviews } = this.state;
      const { handleAddProduct, cart } = this.props;
-     const { shipping } = product;
+     // const { shipping } = product;
      return (
        <div>
          <Link to="/"> home </Link>
@@ -73,10 +73,10 @@ class ProductDetail extends React.Component {
            {product.title}
          </h3>
          <span>{product.price}</span>
-         {
-           shipping.free_shipping
-              && <h4 data-testid="free-shipping">Frete Gratis</h4>
-         }
+         {/* {
+           product.shipping.free_shipping
+             && <h4 data-testid="free-shipping">Frete Gratis</h4>
+         } */}
          <img src={ product.thumbnail } alt="" />
          <button
            data-testid="product-detail-add-to-cart"

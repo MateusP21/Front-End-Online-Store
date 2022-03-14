@@ -76,7 +76,6 @@ class Checkout extends React.Component {
 
                    <button
                      type="button"
-                     onClick={ () => alert('Compra Finalizada') }
                    >
                      Finalizar Compra
 

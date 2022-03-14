@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 class CardProduct extends React.Component {
   render() {
     const { product, handleAddProduct } = this.props;
-    const { shipping } = product;
+    // const { shipping } = product;
     return (
       <section>
 
@@ -14,12 +14,13 @@ class CardProduct extends React.Component {
             <img src={ product.thumbnail } alt="Product" />
             <h3>{product.title}</h3>
             <p>{product.price}</p>
-            {
-              shipping.free_shipping
-              && <h4 data-testid="free-shipping">Frete Gratis</h4>
-            }
+
           </div>
         </Link>
+        {/* {
+          shipping.free_shipping
+            ? <h4 data-testid="free-shipping">Frete Gratis</h4> : ''
+        } */}
         <button
           data-testid="product-add-to-cart"
           type="button"
