@@ -29,34 +29,35 @@ class Cart extends React.Component {
         <Link to="/"> home </Link>
         {
           cart.length > 0
-            ? cart.map((cartProduct) => (
-              <div key={ cartProduct.productIndex }>
-                <h2 data-testid="shopping-cart-product-name">{cartProduct.title}</h2>
-                <p data-testid="shopping-cart-product-quantity">
-                  {
-                    cart.filter(
-                      (productFilter) => productFilter.title === cartProduct.title,
-                    ).length
+            ? [...new Map(cart.map((cartItem) => [cartItem.id, cartItem])).values()]
+              .map((cartProduct) => (
+                <div key={ cartProduct.productIndex }>
+                  <h2 data-testid="shopping-cart-product-name">{cartProduct.title}</h2>
+                  <p data-testid="shopping-cart-product-quantity">
+                    {
+                      cart.filter(
+                        (productFilter) => productFilter.title === cartProduct.title,
+                      ).length
 
-                  }
-                </p>
-                <button
-                  onClick={ () => handleAddProduct(cartProduct) }
-                  data-testid="product-increase-quantity"
-                  type="button"
-                >
-                  +
+                    }
+                  </p>
+                  <button
+                    onClick={ () => handleAddProduct(cartProduct) }
+                    data-testid="product-increase-quantity"
+                    type="button"
+                  >
+                    +
 
-                </button>
-                <button
-                  onClick={ () => handleRemoveProduct(cartProduct) }
-                  data-testid="product-decrease-quantity"
-                  type="button"
-                >
-                  -
+                  </button>
+                  <button
+                    onClick={ () => handleRemoveProduct(cartProduct) }
+                    data-testid="product-decrease-quantity"
+                    type="button"
+                  >
+                    -
 
-                </button>
-              </div>))
+                  </button>
+                </div>))
 
             : <h2 data-testid="shopping-cart-empty-message">Seu carrinho está vazio</h2>
         }
