@@ -1,0 +1,19 @@
+.cart-img {
+  width: 50px;
+}
+
+.cart-quantity {
+  background-color: black;
+  border-radius: 15px;
+  color: aliceblue;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.cart-group {
+  transition: 500ms;
+}
+
+.cart-group:hover {
+  transform: scale(1.2) rotate(4deg);
+}
