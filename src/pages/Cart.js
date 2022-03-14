@@ -13,8 +13,6 @@ class Cart extends React.Component {
   }
 
   render() {
-    // const { product, productQuantity } = this.state;
-
     const { handleAddProduct, handleRemoveProduct, cart } = this.props;
     return (
       <section>
