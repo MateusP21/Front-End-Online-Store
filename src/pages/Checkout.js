@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import '../styles/Checkout.css';
+
+const back = require('../icons/back.png');
 
 class Checkout extends React.Component {
   render() {
@@ -8,7 +11,9 @@ class Checkout extends React.Component {
 
     return (
       <section>
-        <Link to="/cart">Voltar ao carrinho</Link>
+        <Link to="/cart">
+          <img className="back-icon" src={ back } alt="Back Icon" />
+        </Link>
         {
           cart.length === 0 ? <h2>Seu carrinho está vazio</h2>
             : cart.map((cartItem) => (
