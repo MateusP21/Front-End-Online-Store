@@ -3,8 +3,19 @@ import { Link } from 'react-router-dom';
 
 class Carrinho extends React.Component {
   render() {
-    return <Link data-testid="shopping-cart-button" to="/cart"> carrinho </Link>;
+    const { cart } = this.props;
+    return (
+      <Link data-testid="shopping-cart-button" to="/cart">
+        carrinho
+        <p data-testid="shopping-cart-size">
+          { cart.length === 0 ? '0' : cart.length}
+        </p>
+      </Link>);
   }
 }
+
+Carrinho.propTypes = {
+  cart: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default Carrinho;

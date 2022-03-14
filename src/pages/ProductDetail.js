@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getProduct } from '../services/api';
 import Reviews from '../components/Reviews';
+import Carrinho from '../components/Carrinho';
 
 class ProductDetail extends React.Component {
   constructor() {
@@ -62,15 +63,20 @@ class ProductDetail extends React.Component {
 
    render() {
      const { product, saveButton, email, reviews } = this.state;
-     const { handleAddProduct } = this.props;
+     const { handleAddProduct, cart } = this.props;
+     const { shipping } = product;
      return (
        <div>
          <Link to="/"> home </Link>
-         <Link data-testid="shopping-cart-button" to="/cart"> carrinho </Link>
+         <Carrinho cart={ cart } />
          <h3 data-testid="product-detail-name">
            {product.title}
          </h3>
          <span>{product.price}</span>
+         {
+           shipping.free_shipping
+              && <h4 data-testid="free-shipping">Frete Gratis</h4>
+         }
          <img src={ product.thumbnail } alt="" />
          <button
            data-testid="product-detail-add-to-cart"
@@ -175,6 +181,7 @@ class ProductDetail extends React.Component {
 
 ProductDetail.propTypes = {
   handleAddProduct: PropTypes.func.isRequired,
+  cart: PropTypes.arrayOf(PropTypes.object).isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string.isRequired,

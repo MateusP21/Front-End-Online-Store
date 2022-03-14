@@ -48,7 +48,7 @@ class Home extends React.Component {
 
    render() {
      const { categories, query, products: { results }, clicked } = this.state;
-     const { handleAddProduct } = this.props;
+     const { handleAddProduct, cart } = this.props;
      return (
        <div className="App">
          <Sidebar categories={ categories } getCategoryId={ this.getCategoryId } />
@@ -66,7 +66,7 @@ class Home extends React.Component {
            Pesquisar
 
          </button>
-         <Carrinho />
+         <Carrinho cart={ cart } />
          {
            !clicked
            && (
@@ -100,6 +100,7 @@ class Home extends React.Component {
    }
 }
 Home.propTypes = {
+  cart: PropTypes.arrayOf(PropTypes.object).isRequired,
   handleAddProduct: PropTypes.func.isRequired,
 };
 export default Home;

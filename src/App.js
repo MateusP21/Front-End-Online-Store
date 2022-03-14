@@ -59,6 +59,7 @@ class App extends React.Component {
                 <ProductDetail
                   { ...props }
                   handleAddProduct={ this.handleAddProduct }
+                  cart={ cart }
                 />) }
             />
             <Route path="/" exact>

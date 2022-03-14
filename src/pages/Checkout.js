@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class Checkout extends React.Component {
   render() {
@@ -26,7 +27,7 @@ class Checkout extends React.Component {
                <>
                  <p>
                    TOTAL:
-                   {cart.map((cart) => cart.price)
+                   {cart.map((cartItem) => cartItem.price)
                      .reduce((acc, current) => (acc + current), 0)}
                  </p>
                  <form action="">
@@ -88,5 +89,9 @@ class Checkout extends React.Component {
       </section>);
   }
 }
+
+Checkout.propTypes = {
+  cart: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default Checkout;
