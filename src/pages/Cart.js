@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Cart.css';
 import PropTypes from 'prop-types';
-// import { readCartProducts } from '../services/productStorage';
 
 const shopGif = require('../icons/run-shopping.gif');
 
@@ -10,13 +9,30 @@ class Cart extends React.Component {
   constructor() {
     super();
     this.state = {
-      // product: [],
-      // productQuantity: 0,
+      disabledButton: false,
     };
   }
 
+  verifyAvailability = (product) => {
+    const { cart, handleAddProduct } = this.props;
+    const cartProductQuantity = cart.filter(
+      (productFilter) => productFilter.title === product.title,
+    ).length;
+
+    if (cartProductQuantity >= product.available_quantity) {
+      this.setState({
+        disabledButton: true,
+      });
+    } else {
+      this.setState({
+        disabledButton: false,
+      }, () => handleAddProduct(product));
+    }
+  }
+
   render() {
-    const { handleAddProduct, handleRemoveProduct, cart } = this.props;
+    const { disabledButton } = this.state;
+    const { handleRemoveProduct, cart } = this.props;
     return (
       <section>
         {' '}
@@ -35,9 +51,10 @@ class Cart extends React.Component {
                     }
                   </p>
                   <button
-                    onClick={ () => handleAddProduct(cartProduct) }
+                    onClick={ () => this.verifyAvailability(cartProduct) }
                     data-testid="product-increase-quantity"
                     type="button"
+                    disabled={ disabledButton }
                   >
                     +
 
@@ -46,6 +63,7 @@ class Cart extends React.Component {
                     onClick={ () => handleRemoveProduct(cartProduct) }
                     data-testid="product-decrease-quantity"
                     type="button"
+                    disabled={ disabledButton }
                   >
                     -
 

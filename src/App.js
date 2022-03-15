@@ -8,7 +8,6 @@ import Header from './components/Header';
 import Cart from './pages/Cart';
 import ProductDetail from './pages/ProductDetail';
 import Checkout from './pages/Checkout';
-// import { getCategories, getProductsFromCategoryAndQuery } from './services/api';
 
 class App extends React.Component {
   constructor() {
@@ -27,7 +26,6 @@ class App extends React.Component {
      handleAddProduct = (product) => {
        const { cart } = this.state;
        const productIndex = this.generateRandomId();
-       /* console.log(product); */
        this.setState((prevState) => ({
          cart: [...prevState.cart, { ...product, productIndex }],
        }), () => addProduct(cart));

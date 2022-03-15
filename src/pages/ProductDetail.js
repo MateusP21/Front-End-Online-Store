@@ -13,7 +13,6 @@ class ProductDetail extends React.Component {
       review: '',
       rating: '',
       saveButton: true,
-      //  clicked: false,
       reviews: [],
     };
   }
