@@ -1,17 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import '../styles/CardProduct.css';
 
 class CardProduct extends React.Component {
   render() {
     const { product, handleAddProduct } = this.props;
     const { shipping } = product;
     return (
-      <section>
+      <div className="product-card">
 
         <Link data-testid="product-detail-link" to={ `products/${product.id}` }>
           <div data-testid="product">
-            <img src={ product.thumbnail } alt="Product" />
+            <img className="card-product-img" src={ product.thumbnail } alt="Product" />
             <h3>{product.title}</h3>
             <p>{product.price}</p>
 
@@ -24,12 +25,13 @@ class CardProduct extends React.Component {
         <button
           data-testid="product-add-to-cart"
           type="button"
+          className="product-card-add-to-cart"
           onClick={ () => handleAddProduct(product) }
         >
           Adicionar ao carrinho
 
         </button>
-      </section>
+      </div>
     );
   }
 }

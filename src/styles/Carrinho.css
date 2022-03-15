@@ -2,12 +2,15 @@
   width: 50px;
 }
 
+a {
+  text-decoration: none;
+}
+
 .cart-quantity {
   background-color: black;
   border-radius: 15px;
   color: aliceblue;
   padding: 10px;
-  text-decoration: none;
 }
 
 .cart-group {

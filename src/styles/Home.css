@@ -1,0 +1,35 @@
+.App {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.aside {
+  align-items: stretch;
+  display: flex;
+  flex-flow: column wrap;
+  margin-left: 5%;
+}
+
+.main {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  margin-right: 25%;
+}
+
+.input-and-cart-icon {
+  display: flex;
+  justify-content: space-around;
+}
+
+.products {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 30px;
+}
+
+.input-and-btn {
+  height: 80%;
+}

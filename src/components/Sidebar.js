@@ -7,7 +7,7 @@ class Sidebar extends React.Component {
     const { categories, getCategoryId } = this.props;
 
     return (
-      <div>
+      <>
         {
           categories.map(
             (category) => (
@@ -22,7 +22,7 @@ class Sidebar extends React.Component {
             ),
           )
         }
-      </div>
+      </>
     );
   }
 }
