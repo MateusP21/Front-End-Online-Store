@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { cartSize } from '../services/productStorage';
 import PropTypes from 'prop-types';
+import { cartSize } from '../services/productStorage';
 import '../styles/Carrinho.css';
 
 const cartImg = require('../icons/shopping-cart.png');
-
 
 class Carrinho extends React.Component {
   constructor() {
@@ -30,12 +29,12 @@ class Carrinho extends React.Component {
       const { cart } = this.props;
       return (
         <Link data-testid="shopping-cart-button" to="/cart">
-        <div className="cart-group">
-          <img className="cart-img" src={ cartImg } alt="Shopping Cart Icon" />
-          <p className="cart-quantity" data-testid="shopping-cart-size">
-            { !size ? cart.length : size}
-          </p>
-        </div>
+          <div className="cart-group">
+            <img className="cart-img" src={ cartImg } alt="Shopping Cart Icon" />
+            <p className="cart-quantity" data-testid="shopping-cart-size">
+              { !size ? cart.length : size}
+            </p>
+          </div>
         </Link>);
     }
 }
