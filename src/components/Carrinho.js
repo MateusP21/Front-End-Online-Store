@@ -1,18 +1,37 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { cartSize } from '../services/productStorage';
 
 class Carrinho extends React.Component {
-  render() {
-    const { cart } = this.props;
-    return (
-      <Link data-testid="shopping-cart-button" to="/cart">
-        carrinho
-        <p data-testid="shopping-cart-size">
-          { cart.length === 0 ? '0' : cart.length}
-        </p>
-      </Link>);
+  constructor() {
+    super();
+    this.state = {
+      size: 0,
+    };
   }
+
+  componentDidMount() {
+    this.verifySize();
+  }
+
+    verifySize = () => {
+      this.setState({
+        size: cartSize(),
+      });
+    }
+
+    render() {
+      const { size } = this.state;
+      const { cart } = this.props;
+      return (
+        <Link data-testid="shopping-cart-button" to="/cart">
+          carrinho
+          <p data-testid="shopping-cart-size">
+            { !size ? cart.length : size}
+          </p>
+        </Link>);
+    }
 }
 
 Carrinho.propTypes = {
