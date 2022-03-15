@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/Sidebar.css';
 import PropTypes from 'prop-types';
 
 class Sidebar extends React.Component {
@@ -6,11 +7,12 @@ class Sidebar extends React.Component {
     const { categories, getCategoryId } = this.props;
 
     return (
-      <div>
+      <>
         {
           categories.map(
             (category) => (
               <button
+                className="sidebar-btn"
                 type="button"
                 key={ category.id }
                 data-testid="category"
@@ -21,7 +23,7 @@ class Sidebar extends React.Component {
             ),
           )
         }
-      </div>
+      </>
     );
   }
 }

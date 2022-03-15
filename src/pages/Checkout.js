@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import '../styles/Checkout.css';
+
+const back = require('../icons/back.png');
+const shopGif = require('../icons/run-shopping.gif');
 
 class Checkout extends React.Component {
   render() {
@@ -8,9 +12,16 @@ class Checkout extends React.Component {
 
     return (
       <section>
-        <Link to="/cart">Voltar ao carrinho</Link>
+        <Link to="/cart">
+          <img className="back-icon" src={ back } alt="Back Icon" />
+        </Link>
         {
-          cart.length === 0 ? <h2>Seu carrinho está vazio</h2>
+          cart.length === 0 ? (
+            <div>
+              <h2>Seu carrinho ainda está vazio</h2>
+              <p>Que tal ir comprar algo?</p>
+              <img src={ shopGif } alt="Shopping Gif" />
+            </div>)
             : cart.map((cartItem) => (
               <div key={ cartItem.id }>
                 <img src={ cartItem.thumbnail } alt="" />
