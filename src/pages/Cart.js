@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-// import { readCartProducts } from '../services/productStorage';
 
 class Cart extends React.Component {
   constructor() {

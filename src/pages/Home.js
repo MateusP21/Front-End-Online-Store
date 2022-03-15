@@ -1,13 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CardProduct from '../components/CardProduct';
-// import { Link } from 'react-router-dom';
 import Carrinho from '../components/Carrinho';
 import Sidebar from '../components/Sidebar';
 import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
 
 class Home extends React.Component {
-  // getProductsFromCategoryAndQuery('MLB5672', 'Acessórios para Veículos').then((categories) => { console.log(categories) })
   constructor() {
     super();
 
