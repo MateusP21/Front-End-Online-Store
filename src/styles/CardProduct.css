@@ -1,14 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap') ;
+
 .product-card {
   align-items: center;
   border: 1px solid black;
-  border-radius: 5%;
   display: flex;
   flex-flow: column wrap;
+  height: 350px;
   justify-content: center;
   margin: 10px;
-  max-width: 300px;
   padding: 10px;
   transition: 500ms;
+  width: 350px;
 }
 
 .product-card:hover {
@@ -16,6 +18,7 @@
 }
 
 .card-product-img {
+  max-height: 100px;
   max-width: 100px;
 }
 
@@ -23,6 +26,8 @@
   background-color: aliceblue;
   border: 0.5px solid black;
   color: black;
+  cursor: pointer;
+  font-family: Poppins , sans-serif;
   padding: 10px;
   transition: 500ms;
 }

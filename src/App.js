@@ -3,6 +3,8 @@ import './App.css';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { addProduct } from './services/productStorage';
 import Home from './pages/Home';
+import Footer from './components/Footer';
+import Header from './components/Header';
 import Cart from './pages/Cart';
 import ProductDetail from './pages/ProductDetail';
 import Checkout from './pages/Checkout';
@@ -43,6 +45,7 @@ class App extends React.Component {
         const { cart } = this.state;
         return (
           <BrowserRouter>
+            <Header />
             <Route path="/checkout">
               <Checkout cart={ cart } />
             </Route>
@@ -65,6 +68,7 @@ class App extends React.Component {
             <Route path="/" exact>
               <Home handleAddProduct={ this.handleAddProduct } cart={ cart } />
             </Route>
+            <Footer />
           </BrowserRouter>
         );
       }

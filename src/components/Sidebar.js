@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import '../styles/Sidebar.css';
 import PropTypes from 'prop-types';
 
 class Sidebar extends React.Component {
@@ -12,6 +12,7 @@ class Sidebar extends React.Component {
           categories.map(
             (category) => (
               <button
+                className="sidebar-btn"
                 type="button"
                 key={ category.id }
                 data-testid="category"

@@ -14,13 +14,13 @@ class CardProduct extends React.Component {
           <div data-testid="product">
             <img className="card-product-img" src={ product.thumbnail } alt="Product" />
             <h3>{product.title}</h3>
-            <p>{product.price}</p>
+            <p>{`R$${product.price.toFixed(2)}`}</p>
 
           </div>
         </Link>
         {
           shipping.free_shipping
-            ? <h4 data-testid="free-shipping">Frete Gratis</h4> : ''
+            ? <p data-testid="free-shipping">Frete Grátis! 🗳️</p> : ''
         }
         <button
           data-testid="product-add-to-cart"

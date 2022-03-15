@@ -59,12 +59,14 @@ class Home extends React.Component {
            <div className="input-and-cart-icon">
              <div className="input-and-btn">
                <input
+                 className="query-input"
                  onChange={ (e) => this.handleInputChange(e) }
                  value={ query }
                  data-testid="query-input"
                  type="text"
                />
                <button
+                 className="input-btn"
                  onClick={ this.handleGetProducts }
                  data-testid="query-button"
                  type="button"

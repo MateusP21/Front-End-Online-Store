@@ -1,7 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../styles/Cart.css';
 import PropTypes from 'prop-types';
 // import { readCartProducts } from '../services/productStorage';
+
+const home = require('../icons/casa.png');
+const shopGif = require('../icons/run-shopping.gif');
 
 class Cart extends React.Component {
   constructor() {
@@ -17,7 +21,9 @@ class Cart extends React.Component {
     return (
       <section>
         {' '}
-        <Link to="/"> home </Link>
+        <Link to="/">
+          <img className="home-icon-cart" src={ home } alt="Home Icon" />
+        </Link>
         {
           cart.length > 0
             ? [...new Map(cart.map((cartItem) => [cartItem.id, cartItem])).values()]
@@ -50,7 +56,14 @@ class Cart extends React.Component {
                   </button>
                 </div>))
 
-            : <h2 data-testid="shopping-cart-empty-message">Seu carrinho está vazio</h2>
+            : (
+              <div>
+                <h2 data-testid="shopping-cart-empty-message">
+                  Seu carrinho ainda está vazio!
+                </h2>
+                <p>Que tal ir comprar algo?</p>
+                <img src={ shopGif } alt="Shopping Gif" />
+              </div>)
         }
         <Link data-testid="checkout-products" to="/checkout">Finalizar Compra</Link>
       </section>
