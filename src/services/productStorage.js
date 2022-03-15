@@ -15,10 +15,12 @@ const addProduct = (product) => {
     saveCartProducts([...products, product]);
   }
 };
+
+const cartSize = () => readCartProducts().length;
 // const removeProduct = (product) => {
 //   const products = readCartProducts();
 //   saveCartProducts(products.filter(
 //     (cartProduct) => cartProduct.title !== product.title,
 //   )).shift();
 // };
-module.exports = { readCartProducts, addProduct };
+module.exports = { readCartProducts, addProduct, cartSize };
