@@ -25,7 +25,6 @@ class App extends React.Component {
      handleAddProduct = (product) => {
        const { cart } = this.state;
        const productIndex = this.generateRandomId();
-       /* console.log(product); */
        this.setState((prevState) => ({
          cart: [...prevState.cart, { ...product, productIndex }],
        }), () => addProduct(cart));
