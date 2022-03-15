@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getProduct } from '../services/api';
 import Reviews from '../components/Reviews';
@@ -67,7 +66,6 @@ class ProductDetail extends React.Component {
      const { shipping } = product;
      return (
        <div>
-         <Link to="/"> home </Link>
          <Carrinho cart={ cart } />
          <h3 data-testid="product-detail-name">
            {product.title}

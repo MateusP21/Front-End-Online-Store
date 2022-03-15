@@ -12,8 +12,8 @@ class CardProduct extends React.Component {
 
         <Link data-testid="product-detail-link" to={ `products/${product.id}` }>
           <div data-testid="product">
-            <img className="card-product-img" src={ product.thumbnail } alt="Product" />
             <h3>{product.title}</h3>
+            <img className="card-product-img" src={ product.thumbnail } alt="Product" />
             <p>{`R$${product.price.toFixed(2)}`}</p>
 
           </div>
